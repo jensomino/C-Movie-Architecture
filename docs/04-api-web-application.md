@@ -1,4 +1,4 @@
-# 📂 API & Web Application Layer  
+# 🌍 API & Web Application Layer  
 
 ## 1️⃣ Introduction  
 The **API & Web Application Layer** is responsible for providing external access to processed movie ratings and metadata.  
