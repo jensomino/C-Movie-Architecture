@@ -1,4 +1,4 @@
-# 📂 Data Ingestion Layer  
+# 📥 Data Ingestion Layer  
 
 ## 1️⃣ Introduction  
 The **Data Ingestion Layer** is responsible for collecting movie rating data from different sources.  
