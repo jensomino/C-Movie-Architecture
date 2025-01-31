@@ -1,4 +1,4 @@
-# 📂 Storage Layer  
+# 💾 Storage Layer  
 
 ## 1️⃣ Introduction  
 The **Storage Layer** is responsible for storing processed and normalized movie ratings efficiently.  
