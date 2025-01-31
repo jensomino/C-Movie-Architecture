@@ -37,37 +37,38 @@ The platform consists of **four main layers**:
 - **REST API:** Provides endpoints for retrieving movie ratings.
 - **Web Application (React/Vue.js):** Displays movies and C-Ratings.
   
-## 3. Data Flow Description
-1. **Data Collection** → API Connectors and File Processor fetch movie data.
-2. **Data Processing** → Kafka processes data asynchronously.
-3. **Data Cleaning & Normalization** → Ensures consistency in movie data.
-4. **Rating Computation** → C-Rating Aggregator calculates the weighted ratings.
-5. **Data Storage** → Relational and NoSQL databases store processed data.
-6. **Data Retrieval** → API serves the processed data to users.
+## 3️⃣ Data Flow Description
+- 1️⃣ **Data Collection** → API Connectors and File Processor fetch movie data.
+- 2️⃣ **Data Processing** → Kafka processes data asynchronously.
+- 3️⃣ **Data Cleaning & Normalization** → Ensures consistency in movie data.
+- 4️⃣ **Rating Computation** → C-Rating Aggregator calculates the weighted ratings.
+- 5️⃣ **Data Storage** → Relational and NoSQL databases store processed data.
+- 6️⃣ **Data Retrieval** → API serves the processed data to users.
 
-## 4. Batch vs. Streaming Processing
+## 4️⃣ Batch vs. Streaming Processing
 - **Batch Processing (Cloud Scheduler, Airflow)**: Processes large datasets periodically.
 - **Streaming Processing (Kafka, Apache Flink)**: Real-time processing of movie ratings.
 
-## 5. Security & API Management
-- **OAuth Authentication** and **Rate Limiting**.
-- **Data Encryption (HTTPS & at rest)**.
-- **Caching with Redis** for faster responses.
+## 5️⃣ Security & API Management
+- 🔒 **OAuth Authentication** and **Rate Limiting**.
+- 🔒 **Data Encryption (HTTPS & at rest)**.
+- ⚡ **Caching with Redis** for faster responses.
 
-## 6. Future Considerations & Enhancements
-- **User Reviews & Feedback System**.
-- **AI-based Recommendation Engine** for personalized movie suggestions.
-- **Advanced Analytics using BigQuery**.
-- **Edge Caching for performance improvements**.
+## 6️⃣ Future Considerations & Enhancements
+- 🚀 **User Reviews & Feedback System**.
+- 🤖 **AI-based Recommendation Engine** for personalized movie suggestions.
+- 📊 **Advanced Analytics using BigQuery**.
+- ⚡ **Edge Caching for performance improvements**.
 
-## 7. Documentation  
+## 7️⃣ Documentation  
 📌 **For detailed documentation, visit the following sections:**  
 
-- 📥 [Data Ingestion Layer](docs/01-data-ingestion.md)  
-- 🔄 [Data Processing & Normalization Layer](docs/02-data-processing.md)  
-- 💾 [Storage Layer](docs/03-storage.md)  
-- 🌍 [API & Web Application Layer](docs/04-api-web-application.md)  
-- 🚀 [Future Enhancements](docs/future-enhancements.md)  
+📥 [Data Ingestion Layer](docs/01-data-ingestion.md)  
+🔄 [Data Processing & Normalization Layer](docs/02-data-processing.md)  
+💾 [Storage Layer](docs/03-storage.md)  
+🌍 [API & Web Application Layer](docs/04-api-web-application.md)  
+🚀 [Future Enhancements](docs/future-enhancements.md)  
 
-## 8. Conclusion
-The proposed architecture ensures **efficient aggregation, standardization, and retrieval** of movie ratings across multiple sources. This design supports **scalability, maintainability, and future AI enhancements**.
+## 8️⃣ Conclusion
+This architecture ensures **efficient aggregation, standardization, and retrieval** of movie ratings across multiple sources.
+The modular **microservices approach** enables **scalability, maintainability, and future AI-driven improvements**.
