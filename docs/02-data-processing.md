@@ -1,52 +1,68 @@
-# Data Processing & Normalization Layer
+# 🎮 C-Movie System Documentation  
 
-## 1️⃣ Introduction
-The **Data Processing & Normalization Layer** is responsible for **cleaning, standardizing, and processing** movie ratings from multiple sources (IMDb, Rotten Tomatoes, Metacritic, etc.).  
-It ensures that all ratings are transformed into a **consistent format** and computes the **final C-Rating™**.
-
-## 2️⃣ Why is this Layer Important?
-- Different sources use **different scales** (e.g., IMDb: 0-10, Rotten Tomatoes: 0-100%).
-- Movie genres **are not standardized** across platforms.
-- Some sources provide **incomplete or incorrect data**, which must be cleaned.
+## 📌 Table of Contents  
+1. [Data Ingestion Layer](#-data-ingestion-layer)  
+2. [Data Processing & Normalization Layer](#-data-processing--normalization-layer)  
+3. [C-Rating Aggregator](#-c-rating-aggregator)  
 
 ---
 
-## 3️⃣ Components of Data Processing Layer
-This layer consists of the following components:
+# 📂 Data Ingestion Layer  
 
-| Component | Description |
-|-----------|------------|
-| **Data Cleaning & Standardization** | Removes duplicate, missing, or inconsistent data |
-| **Rating Normalizer** | Converts all ratings to a **0-100 scale** |
-| **C-Rating Aggregator** | Computes the final **C-Rating™** |
+## 1️⃣ Introduction  
+The **Data Ingestion Layer** is responsible for collecting movie rating data from different sources.  
+It ensures that data is fetched efficiently, regardless of its format (**API, CSV files, or Web Scraping**).  
 
-🔹 **For more details about the final rating calculation, refer to:**  
-📌 **[C-Rating Aggregator Documentation](docs/c-rating.md)**
----
+## 2️⃣ Why is this Layer Important?  
+- **Multiple data sources** exist (**APIs, CSV, Web Scraping**), each with **different formats**.  
+- Data must be **ingested, queued, and processed asynchronously** to ensure **system efficiency**.  
+- **Real-time data fetching** needs to be balanced with **batch processing** for **scalability**.  
 
-## 4️⃣ **Data Cleaning & Standardization**
-### **🔹 Tasks Performed**
-✅ **Duplicate Removal:** If the same movie appears multiple times, only the most reliable data is kept.  
-✅ **Missing Value Handling:** If data is missing, it is either ignored or estimated based on available sources.  
-✅ **Genre Standardization:** Different platforms categorize genres differently, so they are unified.
+## 3️⃣ Components of Data Ingestion Layer  
+| 🏠 **Component** | 🔍 **Description** |  
+|----------------|------------------|  
+| **API Connectors** | Fetches data from external APIs (IMDb, Rotten Tomatoes, Metacritic) |  
+| **File Processor** | Handles periodic file uploads (CSV, JSON, XML) |  
+| **Message Queue (Kafka/RabbitMQ)** | Stores incoming data before processing |  
 
-### **🔹 Example - Standardizing Genres**
-| IMDb | Rotten Tomatoes | Metacritic | **Standardized Genre** |
-|------|---------------|-----------|------------------|
-| Sci-Fi | Science Fiction | SciFi | **Science Fiction** |
-| Drama, Mystery | Drama | Drama/Thriller | **Drama** |
+## 4️⃣ API Connectors  
+This component connects to **external APIs** to fetch **real-time data**.  
 
-### **🔹 Python Example**
+### **🔹 Example API Request**  
+```http
+GET https://api.imdb.com/movies?title=Inception
+Authorization: Bearer <token>
+```
+
+## 5️⃣ Why Do We Use Message Queues? (Kafka vs RabbitMQ)  
+Once data is ingested from APIs or files, it must be **queued** for processing to ensure **system scalability**.  
+
+### **🔹 Why Message Queues?**  
+✅ **Asynchronous Processing:** Prevents API overload and ensures smooth data ingestion.  
+✅ **Scalability:** Allows multiple processing units to handle data in parallel.  
+✅ **Failure Handling:** Ensures messages are not lost and can be retried if needed.  
+
+### **🔹 Kafka vs RabbitMQ: Which One to Choose?**  
+| 📌 Feature | 🦋 Kafka | 🐇 RabbitMQ |  
+|-----------|-----------|------------|  
+| **Best for** | High-volume data ingestion | Small fast messages |  
+| **Processing Type** | Stream Processing | Transactional |  
+| **Scalability** | Highly scalable | Limited |  
+| **Latency** | 10-50ms | ~1ms |  
+| **Data Storage** | Retains logs for reprocessing | Deletes after consumption |  
+
+📌 **For C-Movie, Kafka is the best choice** because it allows **high-volume, scalable, and distributed data processing.**  
+
+## 6️⃣ Kafka Implementation Example  
 ```python
-def standardize_genre(genres):
-    mapping = {
-        "Sci-Fi": "Science Fiction",
-        "SciFi": "Science Fiction",
-        "Science Fiction": "Science Fiction",
-        "Drama/Thriller": "Drama",
-        "Mystery": "Drama"
-    }
-    return [mapping.get(genre, genre) for genre in genres]
+from kafka import KafkaProducer
+import json
 
-genres = ["Sci-Fi", "Drama/Thriller"]
-print(standardize_genre(genres))  # Output: ['Science Fiction', 'Drama']
+producer = KafkaProducer(bootstrap_servers="localhost:9092",
+                         value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+
+message = {"title": "Inception", "rating": 88, "genres": ["Sci-Fi", "Thriller"]}
+producer.send("movie_ratings", message)
+producer.flush()
+```
+
