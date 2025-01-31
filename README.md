@@ -60,15 +60,6 @@ The platform consists of **four main layers**:
 - 📊 **Advanced Analytics using BigQuery**.
 - ⚡ **Edge Caching for performance improvements**.
 
-## 7️⃣ Documentation  
-📌 **For detailed documentation, visit the following sections:**  
-
-📥 [Data Ingestion Layer](docs/01-data-ingestion.md)  
-🔄 [Data Processing & Normalization Layer](docs/02-data-processing.md)  
-💾 [Storage Layer](docs/03-storage.md)  
-🌍 [API & Web Application Layer](docs/04-api-web-application.md)  
-🚀 [Future Enhancements](docs/future-enhancements.md)  
-
-## 8️⃣ Conclusion
+## 7️⃣ Conclusion
 This architecture ensures **efficient aggregation, standardization, and retrieval** of movie ratings across multiple sources.
 The modular **microservices approach** enables **scalability, maintainability, and future AI-driven improvements**.
