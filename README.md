@@ -15,7 +15,6 @@ The platform consists of **four main layers**:
 ## 2️⃣ UML Architecture  
 
 ### 📌 **System Architecture Diagram**  
-![C-Movie Architecture](docs/c-movie-architecture-diagram.png)
 ![C-Movie Architecture](c-movie-architecture-diagram.png)
 
 ## 3. Data Flow Description
