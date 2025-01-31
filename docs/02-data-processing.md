@@ -21,7 +21,7 @@ This layer consists of the following components:
 | **C-Rating Aggregator** | Computes the final **C-Rating™** |
 
 🔹 **For more details about the final rating calculation, refer to:**  
-📌 **[C-Rating Aggregator Documentation](docs/c-rating.md)**
+📌 **[C-Rating Aggregator Documentation]([docs/c-rating.md](https://github.com/jensomino/C-Movie-Architecture/blob/main/docs/c-rating.md))**
 
 ---
 
