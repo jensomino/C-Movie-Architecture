@@ -1,4 +1,4 @@
-# 📂 Data Processing & Normalization Layer  
+# 🔄 Data Processing  
 
 ## 1️⃣ Introduction  
 The **Data Processing & Normalization Layer** is responsible for **cleaning, standardizing, and processing** movie ratings from multiple sources.  
@@ -14,9 +14,6 @@ The **Data Processing & Normalization Layer** is responsible for **cleaning, sta
 | **Data Cleaning & Standardization** | Removes duplicate, missing, or inconsistent data |  
 | **Rating Normalizer** | Converts all ratings to a **0-100 scale** |  
 | **C-Rating Aggregator** | Computes the final **C-Rating™** |  
-
-🔹 **For more details about the final rating calculation, refer to:**  
-📌 **[C-Rating Aggregator](#-c-rating-aggregator)**  
 
 ## 4️⃣ **Rating Normalization**  
 Different sources use different rating scales, so we **normalize them** to a **0-100 scale**.  
@@ -68,10 +65,6 @@ If we have the following ratings for a movie:
 | Screenplay | `90` |  
 | Soundtrack | `80` |  
 
-Using our formula:  
-$$
-C\text{-}Rating = \frac{(0.4 \times 85) + (0.35 \times 90) + (0.25 \times 80)}{(0.4 + 0.35 + 0.25)}
-$$
 
 $$
 C\text{-}Rating = \frac{34 + 31.5 + 20}{1}
