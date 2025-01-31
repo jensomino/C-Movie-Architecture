@@ -1,12 +1,3 @@
-# 🎮 C-Movie System Documentation  
-
-## 📌 Table of Contents  
-1. [Data Ingestion Layer](#-data-ingestion-layer)  
-2. [Data Processing & Normalization Layer](#-data-processing--normalization-layer)  
-3. [C-Rating Aggregator](#-c-rating-aggregator)  
-
----
-
 # 📂 Data Ingestion Layer  
 
 ## 1️⃣ Introduction  
