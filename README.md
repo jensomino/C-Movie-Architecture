@@ -12,11 +12,31 @@ The platform consists of **four main layers**:
 
 ---
 
-## 2️⃣ UML Architecture  
-
-### 📌 **System Architecture Diagram**  
+## 2️⃣ System Architecture Diagram  
 ![C-Movie Architecture](c-movie-architecture-diagram.png)
 
+### 2.1. 📥 Data Ingestion Layer
+- **API Connectors** → Retrieves movie ratings from external providers.
+- **File Processor** → Handles CSV data from external sources.
+- **Message Queue (Kafka/RabbitMQ)** → Manages asynchronous data flow.
+
+### 2.2. 🔄 Data Processing & Normalization Layer
+- **Data Cleaning & Standardization:** Handles missing values, duplicates, and standardizes genres.
+- **Rating Normalizer:** Converts ratings from different scales to 0-100.
+- **C-Rating Aggregator:** Computes final C-Rating based on:
+  - **Performance**
+  - **Screenplay**
+  - **Soundtrack**
+
+### 2.3. 💾 Storage Layer
+- **Relational Database (PostgreSQL/MySQL)** → Stores structured data.
+- **NoSQL Database (MongoDB/Redis)** → Caches frequently accessed data.
+- **Data Lake (Cloud Storage, S3, or BigQuery)** → Stores raw data for analytics.
+
+### 2.4. 🌍 API & Web Application Layer
+- **REST API:** Provides endpoints for retrieving movie ratings.
+- **Web Application (React/Vue.js):** Displays movies and C-Ratings.
+  
 ## 3. Data Flow Description
 1. **Data Collection** → API Connectors and File Processor fetch movie data.
 2. **Data Processing** → Kafka processes data asynchronously.
