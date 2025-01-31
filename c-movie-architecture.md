@@ -11,7 +11,7 @@ flowchart TB
         FileProcessor[File Processor - CSV Handling] --> MsgQueue
     end
     
-    subgraph L2 [Data Processing & Normalization Layer]
+    subgraph L2 [Data Processing Layer]
         MsgQueue --> CleanStandardize[Data Cleaning & Standardization]
         CleanStandardize --> RatingNormalizer[Rating Normalizer]
         RatingNormalizer --> CRatingAggregator["C-Rating Aggregator"]
