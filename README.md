@@ -20,7 +20,7 @@ The platform consists of **four main layers**:
 - **File Processor** → Handles CSV data from external sources.
 - **Message Queue (Kafka/RabbitMQ)** → Manages asynchronous data flow.
 
-### 2.2. 🔄 Data Processing & Normalization Layer
+### 2.2. 🔄 Data Processing Layer
 - **Data Cleaning & Standardization:** Handles missing values, duplicates, and standardizes genres.
 - **Rating Normalizer:** Converts ratings from different scales to 0-100.
 - **C-Rating Aggregator:** Computes final C-Rating based on:
