@@ -44,15 +44,3 @@ Once data is ingested from APIs or files, it must be **queued** for processing t
 
 📌 **For C-Movie, Kafka is the best choice** because it allows **high-volume, scalable, and distributed data processing.**  
 
-## 6️⃣ Kafka Implementation Example  
-```python
-from kafka import KafkaProducer
-import json
-
-producer = KafkaProducer(bootstrap_servers="localhost:9092",
-                         value_serializer=lambda v: json.dumps(v).encode('utf-8'))
-
-message = {"title": "Inception", "rating": 88, "genres": ["Sci-Fi", "Thriller"]}
-producer.send("movie_ratings", message)
-producer.flush()
-```
